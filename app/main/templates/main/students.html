@@ -1,0 +1,22 @@
+{% extends 'main/main.html' %} {% block content %}
+
+<h1>Students Homepage</h1>
+
+<form id="form" role="search">
+  <input
+    type="search"
+    id="query"
+    name="q"
+    placeholder="Search..."
+    aria-label="Search through site content"
+  />
+  <button>Search</button>
+
+  {% comment %}
+    1. Create new students in admin panel
+    2. Fetch the students from backend, and loop over them: displaying name and email
+    3. Make the search field request a new list of students where the name/email matches the query
+  {% endcomment %}
+</form>
+
+{% endblock %}
