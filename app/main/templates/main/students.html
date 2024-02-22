@@ -11,12 +11,22 @@
     aria-label="Search through site content"
   />
   <button>Search</button>
-
-  {% comment %}
-    1. Create new students in admin panel
-    2. Fetch the students from backend, and loop over them: displaying name and email
-    3. Make the search field request a new list of students where the name/email matches the query
-  {% endcomment %}
 </form>
+
+{% comment %}
+  1. Create new students in admin panel
+  2. Fetch the students from backend, replacing the fake ones
+  3. Make the search field request a new list of students where the name/email matches the query
+{% endcomment %}
+
+{% for student in students %}
+  <div class="card" style="width: 18rem;">
+    <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-title lead">{{ student.name }}</p>
+      <p class="card-subtitle text-body-secondary">{{ student.email }}</p>
+    </div>
+  </div>
+{% endfor %}
 
 {% endblock %}
