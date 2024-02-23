@@ -130,3 +130,6 @@ GitHub.sublime-settings
 
 # Docker volumes
 data/
+
+# Operating System files
+.DS_Store
