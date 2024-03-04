@@ -83,6 +83,11 @@ DATABASES = {
         "USER": os.getenv("POSTGRES_USER"),
         "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
     }
+    if os.getenv("IN_DOCKER_CONTAINER") == "yes"
+    else {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
 
