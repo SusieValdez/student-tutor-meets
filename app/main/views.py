@@ -26,20 +26,8 @@ fake_students = [
 
 
 def home(request):
-    return render(request, "main/dashboard.html")
-
-
-def meetings(request):
-    return render(request, "main/meetings.html")
+    return render(request, "main/pages/home.html", {"user": request.user})
 
 
 def students(request):
-    return render(request, "main/students.html", {"students": fake_students})
-
-
-def notes(request):
-    return render(request, "main/notes.html")
-
-
-def calendar(request):
-    return render(request, "main/calendar.html")
+    return render(request, "main/pages/students.html", {"students": fake_students})
