@@ -1,0 +1,76 @@
+{% extends 'main/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="flex flex-col h-screen">
+  <!-- Header -->
+  <div class="flex flex-col w-full justify-center items-center bg-purple-700 p-2 gap-3 rounded-b-3xl h-1/4">
+    <h2 class="text-xl font-bold">Profile</h2>
+    <img src="{% static 'main/img/default_profile_pic.jpg' %}" class="w-20 rounded-3xl" />
+    <h3 class="text-lg font-semibold">{{ user.first_name }} {{ user.last_name }}</h3>
+  </div>
+
+  <!-- Content -->
+  <div class="h-full w-screen p-4 flex flex-col items-center gap-5">
+
+    <!-- Personal Details -->
+    <div class="flex w-full justify-between p-2">
+      <h4>Student ID: </h4>
+      <h4>Personal Tutor: </h4>
+    </div>
+
+    <!-- Summary -->
+    <div class="flex justify-between items-center p-2 border-4 border-purple-700 rounded-3xl w-full">
+      <div class="flex flex-col text-center items-center">
+        <p>0</p>
+        <h5>My sessions</h5>
+      </div>
+      <div class="flex flex-col text-center items-center">
+        <div>4</div>
+        <div>Number of courses</div>
+      </div>
+      <div class="flex flex-col text-center items-center">
+        <div>3</div>
+        <div>Notifications</div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-2 grid-rows-3 gap-4 h-5/6 w-4/5 mx-auto">
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Course
+        </div>
+      </a>
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Calendar
+        </div>
+      </a>
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Chat
+        </div>
+      </a>
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Library
+        </div>
+      </a>
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Student Support
+        </div>
+      </a>
+      <a href="#">
+        <div class="flex p-2 text-center items-center justify-center bg-purple-600 row-span-1  col-span-1 rounded-xl h-full text-2xl font-bold text-purple-50">
+          Track Progress
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
