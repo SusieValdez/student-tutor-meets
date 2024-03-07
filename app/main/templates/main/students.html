@@ -2,15 +2,19 @@
 
 <h1>Students Homepage</h1>
 
-<form id="form" role="search">
+<form class="d-flex" role="search" method="POST" action="{% url 'students' %}">
+  {%csrf_token%}
   <input
+    class="form-control me-2"
     type="search"
     id="query"
-    name="q"
-    placeholder="Search..."
+    name="search"
+    placeholder="Search by name or ID"
     aria-label="Search through site content"
+
+
   />
-  <button>Search</button>
+  <button class = "btn btn-outline-success" type="submit" >Search</button>
 </form>
 
 {% comment %}

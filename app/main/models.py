@@ -13,12 +13,15 @@ class BaseUser(models.Model):
 
 
 class Tutor(BaseUser):
-    def __repr__(self):
-        return f"<Tutor: {self.name}>"
+    def __str__(self):
+        return (self.name)
 
 
 class Student(BaseUser):
     personal_tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
+    student_id = models.IntegerField()
+    course = models.CharField(max_length=200),
 
-    def __repr__(self):
-        return f"<Student: {self.name}>"
+
+    def __str__(self):
+        return (self.name)
