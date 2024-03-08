@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
 from .models import Tutor, Student
 
 
@@ -25,9 +27,11 @@ fake_students = [
 ]
 
 
+@login_required
 def home(request):
     return render(request, "main/pages/home.html", {"user": request.user})
 
 
+@login_required
 def students(request):
     return render(request, "main/pages/students.html", {"students": fake_students})

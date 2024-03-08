@@ -1,0 +1,27 @@
+{% extends "main/main.html" %}
+{% load static %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p class="text-red-500 text-sm">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+<div class="flex flex-col h-screen bg-gray-200">
+  <div class="flex flex-col justify-center items-center h-1/3 bg-soft-pink rounded-b-3xl">
+    <img src="{% static 'main/img/login.jpg' %}" class="w-52"/>
+    <h1 class="font-serif text-xl font-bold">SAMSS Tutor</h1>
+    <h2 class="font-serif text-xl font-thin">Track and Monitor Student's Progress</h2>
+  </div>
+  <div class="h-2/3 p-5 flex flex-col items-center">
+      <form method="post" action="{% url 'login' %}" class="flex flex-col gap-5 w-full md:w-2/3 lg:w-1/2">
+          {% csrf_token %}
+              <input type="text" placeholder="Username:" id="username" name="username" class="h-12 rounded-xl px-3">
+              <input type="password" placeholder="Password:" id="password" name="password" class="h-12 rounded-xl px-3">
+          <input type="hidden" name="next" value="{{ next }}">
+          <button type="submit" class="self-center w-52 h-12 text-xl text-gray-50 bg-soft-purple rounded-lg">Login</button>
+      </form>
+  </div>
+ 
+</div>
+{% endblock %}
