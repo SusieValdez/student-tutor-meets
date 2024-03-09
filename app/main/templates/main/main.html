@@ -5,8 +5,28 @@
     <meta charset="UTF-8" />
     <title>Personal Tutor App</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+        "soft-pink": "#F5D0FE",
+        "dark-pink": "#A21CAF",
+        "soft-purple": "#E3B8E8"
+      },
+        }
+      }
+    }
+  </script>
   </head>
   <body>
+    {% if user.is_authenticated %}
+      <form id="logout-form" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link">Logout</button>
+      </form>
+    {% endif %}
+
     {% block content%} {% endblock %}
   </body>
 </html>
