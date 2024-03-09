@@ -6,22 +6,14 @@
   {%csrf_token%}
   <input
     class="form-control me-2"
-    type="search"
+    type="query"
     id="query"
-    name="search"
+    name="query"
     placeholder="Search by name or ID"
     aria-label="Search through site content"
-
-
   />
   <button class = "btn btn-outline-success" type="submit" >Search</button>
 </form>
-
-{% comment %}
-  1. Create new students in admin panel
-  2. Fetch the students from backend, replacing the fake ones
-  3. Make the search field request a new list of students where the name/email matches the query
-{% endcomment %}
 
 {% for student in students %}
   <div class="card" style="width: 18rem;">

@@ -11,17 +11,15 @@ class BaseUser(models.Model):
     class Meta:
         abstract = True
 
+    def __str__(self):
+        return self.name
+
 
 class Tutor(BaseUser):
-    def __str__(self):
-        return (self.name)
+    pass
 
 
 class Student(BaseUser):
     personal_tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
     student_id = models.IntegerField()
-    course = models.CharField(max_length=200),
-
-
-    def __str__(self):
-        return (self.name)
+    course = models.CharField(max_length=200)

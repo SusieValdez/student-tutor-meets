@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Tutor, Student
+from django.db.models import Q
+from .models import Student
 
 
 def home(request):
@@ -11,14 +12,20 @@ def meetings(request):
 
 
 def students(request):
-    display_student = Student.objects.all()
-    return render(request, "main/students.html", {"students": display_student})
-    if request.method == 'POST':
-        search_query= request.POST('search_query')
-        posts= Student.objects.filter(name__contains=search_query)
-        return render(request, "main/students.html", {'query':search_query, 'search':posts})
-    else:
-        return render(request, 'main/students.html', {})
+    if request.method == "POST":
+        query = request.POST["query"]
+        # Filter students by name, email, or ID
+        students = Student.objects.filter(
+            Q(name__icontains=query)
+            | Q(email__icontains=query)
+            | Q(student_id__icontains=query)
+        )
+        return render(request, "main/students.html", {"students": students})
+
+    # Fetch all students
+    students = Student.objects.all()
+    return render(request, "main/students.html", {"students": students})
+
 
 def notes(request):
     return render(request, "main/notes.html")
