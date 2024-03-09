@@ -1,32 +1,28 @@
 {% extends 'main/main.html' %}
+{% load static %}
 
 {% block content %}
 
 <h1>Students</h1>
 
-<form id="form" role="search">
+<form class="d-flex" role="search" method="POST" action="{% url 'students' %}">
+  {%csrf_token%}
   <input
-    type="search"
+    class=""
+    type="query"
     id="query"
-    name="q"
-    placeholder="Search..."
-    aria-label="Search through site content"
+    name="query"
+    placeholder="Search by name, email, or ID"
   />
-  <button>Search</button>
+  <button class = "" type="submit" >Search</button>
 </form>
 
-{% comment %}
-  1. Create new students in admin panel
-  2. Fetch the students from backend, replacing the fake ones
-  3. Make the search field request a new list of students where the name/email matches the query
-{% endcomment %}
-
 {% for student in students %}
-  <div class="card" style="width: 18rem;">
-    <img src="{{ student.profile_pic_url }}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <p class="card-title lead">{{ student.name }}</p>
-      <p class="card-subtitle text-body-secondary">{{ student.email }}</p>
+  <div class="">
+    <img src="{% static student.profile_pic_url %}" class="w-10" alt="Profile picture">
+    <div class="">
+      <p class="">{{ student.name }}</p>
+      <p class="">{{ student.email }}</p>
     </div>
   </div>
 {% endfor %}
