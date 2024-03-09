@@ -4,11 +4,7 @@ from .models import Student
 
 
 def home(request):
-    return render(request, "main/dashboard.html")
-
-
-def meetings(request):
-    return render(request, "main/meetings.html")
+    return render(request, "main/pages/home.html", {"user": request.user})
 
 
 def students(request):
@@ -20,16 +16,8 @@ def students(request):
             | Q(email__icontains=query)
             | Q(student_id__icontains=query)
         )
-        return render(request, "main/students.html", {"students": students})
+        return render(request, "main/pages/students.html", {"students": students})
 
     # Fetch all students
     students = Student.objects.all()
-    return render(request, "main/students.html", {"students": students})
-
-
-def notes(request):
-    return render(request, "main/notes.html")
-
-
-def calendar(request):
-    return render(request, "main/calendar.html")
+    return render(request, "main/pages/students.html", {"students": students})

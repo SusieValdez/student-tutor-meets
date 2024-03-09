@@ -5,7 +5,7 @@ class BaseUser(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
     profile_pic_url = models.CharField(
-        max_length=2000, default="img/default_profile_pic.jpg"
+        max_length=2000, default="main/img/default_profile_pic.jpg"
     )
 
     class Meta:
