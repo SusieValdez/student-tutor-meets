@@ -3,28 +3,81 @@
 
 {% block content %}
 
-<h1>Students</h1>
+
+<!-- Summary -->
+<div class="flex justify-between items-center p-2 border-4 border-dark-pink rounded-3xl w-full">
+  <div class="flex flex-col text-center items-center">
+    <p>0</p>
+    <h5>My sessions</h5>
+  </div>
+  <div class="flex flex-col text-center items-center">
+    <div>5</div>
+    <div>Number of tutee</div>
+  </div>
+  <div class="flex flex-col text-center items-center">
+    <div>3</div>
+    <div>Notifications</div>
+  </div>
+</div>
 
 <form class="d-flex" role="search" method="POST" action="{% url 'students' %}">
   {%csrf_token%}
   <input
-    class=""
+    class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg"
     type="query"
     id="query"
     name="query"
     placeholder="Search by name, email, or ID"
   />
-  <button class = "" type="submit" >Search</button>
+  <button class="bg-dark-pink p-2 text-slate-50 rounded-lg"  type="submit" >Search</button>
 </form>
 
-{% for student in students %}
-  <div class="">
-    <img src="{% static student.profile_pic_url %}" class="w-10" alt="Profile picture">
-    <div class="">
-      <p class="">{{ student.name }}</p>
-      <p class="">{{ student.email }}</p>
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align middle inline-block w-screen sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-soft-pink">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Email
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                ID
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {% for student in students %}
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items center">
+                    <div class="flex-shrink-0 h-10 w-10">
+                      <img class="h-10 w-10 rounded-full" src="{% static student.profile_pic_url %}" alt="">
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        {{ student.name }}
+                      </div>
+                    </div> 
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ student.email }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{ student.id }}</div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-{% endfor %}
+</div>
 
 {% endblock %}
