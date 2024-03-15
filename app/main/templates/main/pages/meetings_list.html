@@ -1,0 +1,15 @@
+{% extends 'main/meetings_main.html' %}
+{% load static %}
+
+{% block meeting %}
+
+<div class="flex flex-col gap-4">
+  {% for meeting in meetings %}
+    <div class="bg-white shadow-md rounded-md p-4">
+      <div class="text-gray-800 font-bold">{{ meeting.date }}</div>
+      <div class="text-gray-600">{{ meeting.start_time }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

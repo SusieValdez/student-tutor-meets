@@ -23,3 +23,12 @@ class Student(BaseUser):
     personal_tutor = models.ForeignKey(Tutor, on_delete=models.CASCADE)
     student_id = models.IntegerField()
     course = models.CharField(max_length=200)
+
+
+class Meeting(models.Model):
+    date = models.DateField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.date}"
