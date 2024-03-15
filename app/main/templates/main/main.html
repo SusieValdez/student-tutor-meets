@@ -25,8 +25,12 @@
       <!-- Header -->
       <div class="flex flex-col w-full justify-center items-center bg-soft-pink p-2 gap-3 rounded-b-3xl h-1/4">
         <h2 class="text-xl font-bold">Profile</h2>
-        <img src="{% static 'main/img/default_profile_pic.jpg' %}" class="w-20 rounded-3xl" />
-        <h3 class="text-lg font-semibold">{{ user.username }}</h3>
+        <a href="{% url 'home' %}">
+          <div class="flex flex-col items-center">
+            <img src="{% static 'main/img/default_profile_pic.jpg' %}" class="w-20 rounded-3xl" />
+            <h3 class="text-lg font-semibold">{{ user.username }}</h3>
+          </div>
+        </a>
         <form class="bg-dark-pink p-2 text-slate-50 rounded-lg" id="logout-form" method="post" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="btn btn-link">Logout</button>
