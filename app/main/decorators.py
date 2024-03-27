@@ -1,6 +1,6 @@
+
 from django.http import HttpResponse
 from django.shortcuts import redirect
-
 
 def unaunthenicated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
@@ -41,7 +41,4 @@ def admin_only (view_func):
             return view_func (request, *args, **kwargs)
 
     return wrapper_function
-
-
-
 
