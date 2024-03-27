@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<h1> Tutor Management Center </h1>
+<h1> Student Management Center </h1>
 
 <form method="POST" actions="">
   {% csrf_token %}
@@ -11,12 +11,12 @@
   <input type="submit" name="Create User">
 </form>
 
-{% for tutor in manage_tutor%}
+{% for student in students %}
   <div class="">
     <img src="{% static student.profile_pic_url %}" class="w-10" alt="Profile picture">
     <div class="">
-      <p class="">{{ tutor.name }}</p>
-      <p class="">{{ tutor.email }}</p>
+      <p class="">{{ student.name }}</p>
+      <p class="">{{ student.email }}</p>
     </div>
   </div>
 {% endfor %}
